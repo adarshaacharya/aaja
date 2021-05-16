@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Get todays nepali date from your goddamn console.",
   "main": "bin/index.js",
+  "bin": {
+		"aaja": "bin/index.js"
+	},
   "scripts": {
     "test": "npm run test"
   },
