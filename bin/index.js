@@ -2,14 +2,17 @@
 
 'use strict';
 
-const dns = require('dns');
-const got = require('got');
-const cheerio = require('cheerio');
-const chalk = require('chalk');
-const ora = require('ora');
-const logUpdate = require('log-update');
-const updateNotifier = require('update-notifier');
-const pkg = require('../package.json');
+import dns from 'dns';
+import got from 'got';
+import cheerio from 'cheerio';
+import chalk from 'chalk';
+import ora from 'ora';
+import logUpdate from 'log-update';
+import updateNotifier from 'update-notifier';
+import meow from 'meow';
+
+import { promises as fsp } from 'fs';
+const pkg = JSON.parse(await fsp.readFile('package.json', 'utf-8'));
 
 updateNotifier({ pkg }).notify();
 
@@ -24,6 +27,11 @@ const checkArgs = () => {
     
       ${chalk.cyan('$ aaja')}     display today's nepali date
     `);
+    meow(`
+	      Usage
+	        $ aaja
+    `);
+
     process.exit(1);
   }
 };
@@ -32,7 +40,7 @@ const checkConnection = () => {
   dns.lookup(url, (err) => {
     if (err) {
       console.log(err);
-      logUpdate(`\n ✖ You're offline! \n`);
+      logUpdate(`\n ✖ Please check your internet connection. \n`);
       process.exit(1);
     } else {
       logUpdate();
@@ -43,7 +51,7 @@ const checkConnection = () => {
 };
 
 const showError = () => {
-  logUpdate(`\n${chalk.dim('Could not fetch date. Please try again!')}\n`);
+  logUpdate(`\n${dim('Could not fetch date. Please try again!')}\n`);
   process.exit(1);
 };
 

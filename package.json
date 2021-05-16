@@ -2,10 +2,12 @@
   "name": "aaja",
   "version": "1.0.0",
   "description": "Get todays nepali date from your goddamn console.",
-  "main": "bin/index.js",
+  "export": "./bin/index.js",
+  "node": "^12.20.0 || ^14.13.1 || >=16.0.0",
+  "type": "module",
   "bin": {
-		"aaja": "bin/index.js"
-	},
+    "aaja": "bin/index.js"
+  },
   "scripts": {
     "test": "npm run test"
   },
@@ -20,6 +22,7 @@
     "cheerio": "*",
     "got": "^11.8.2",
     "log-update": "^4.0.0",
+    "meow": "^10.0.0",
     "ora": "^5.4.0",
     "update-notifier": "^5.1.0"
   }
