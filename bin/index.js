@@ -11,6 +11,7 @@ const logUpdate = require('log-update');
 const updateNotifier = require('update-notifier');
 const meow = require('meow');
 const pkg = require('../package.json');
+const { showOutput } = require('../utils/output');
 
 updateNotifier({ pkg }).notify();
 
@@ -18,17 +19,10 @@ const spinner = ora();
 const url = `english.hamropatro.com`;
 
 const checkArgs = () => {
-    // console.log(`
-    //   ${chalk.cyan('Usage:')} 
-    
-    //   ${chalk.cyan('$ aaja')}     display today's nepali date
-    // `);
-    meow(`
+  meow(`
     Usage
       $ aaja
   `);
-
-    process.exit(1);
 };
 
 const checkConnection = () => {
@@ -65,8 +59,8 @@ const main = () => {
 
       const main = `#top .container12 .column4 .logo`;
 
-      const npdate = $(`${main} .date`);
-      aaja.date = npdate.text().trim();
+      const npDate = $(`${main} .date`);
+      aaja.npDate = npDate.text().trim();
 
       const [tithi, events] = $(`${main} .events`)
         .text()
@@ -80,11 +74,11 @@ const main = () => {
       const time = $(`${main} .time > span:nth-child(1)`);
       aaja.time = time.text().trim();
 
-      const ad = $(`${main} .time >span.eng`);
-      aaja.ad = ad.text().trim();
+      const enDate = $(`${main} .time >span.eng`);
+      aaja.enDate = enDate.text().trim();
 
       spinner.stop();
-      console.log({...aaja});
+      showOutput(aaja);
     })
     .catch((err) => {
       if (err) showError();
