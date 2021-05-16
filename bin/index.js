@@ -2,38 +2,33 @@
 
 'use strict';
 
-import dns from 'dns';
-import got from 'got';
-import cheerio from 'cheerio';
-import chalk from 'chalk';
-import ora from 'ora';
-import logUpdate from 'log-update';
-import updateNotifier from 'update-notifier';
-import meow from 'meow';
-
-import { promises as fsp } from 'fs';
-const pkg = JSON.parse(await fsp.readFile('package.json', 'utf-8'));
+const dns = require('dns');
+const got = require('got');
+const cheerio = require('cheerio');
+const chalk = require('chalk');
+const ora = require('ora');
+const logUpdate = require('log-update');
+const updateNotifier = require('update-notifier');
+const meow = require('meow');
+const pkg = require('../package.json');
 
 updateNotifier({ pkg }).notify();
 
 const spinner = ora();
-const arg = process.argv[2];
 const url = `english.hamropatro.com`;
 
 const checkArgs = () => {
-  if (arg === '-h' || arg === '--help') {
-    console.log(`
-      ${chalk.cyan('Usage:')} 
+    // console.log(`
+    //   ${chalk.cyan('Usage:')} 
     
-      ${chalk.cyan('$ aaja')}     display today's nepali date
-    `);
+    //   ${chalk.cyan('$ aaja')}     display today's nepali date
+    // `);
     meow(`
-	      Usage
-	        $ aaja
-    `);
+    Usage
+      $ aaja
+  `);
 
     process.exit(1);
-  }
 };
 
 const checkConnection = () => {
@@ -51,7 +46,7 @@ const checkConnection = () => {
 };
 
 const showError = () => {
-  logUpdate(`\n${dim('Could not fetch date. Please try again!')}\n`);
+  logUpdate(`\n${chalk.dim('Could not fetch date. Please try again!')}\n`);
   process.exit(1);
 };
 
@@ -89,7 +84,7 @@ const main = () => {
       aaja.ad = ad.text().trim();
 
       spinner.stop();
-      console.log(aaja);
+      console.log({...aaja});
     })
     .catch((err) => {
       if (err) showError();
