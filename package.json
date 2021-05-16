@@ -1,0 +1,23 @@
+{
+  "name": "aaja",
+  "version": "1.0.0",
+  "description": "Get todays nepali date from your goddamn console.",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "keywords": [
+    "nepali",
+    "date"
+  ],
+  "author": "Aadarsha Acharya",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "cheerio": "*",
+    "got": "^11.8.2",
+    "log-update": "^4.0.0",
+    "ora": "^5.4.0",
+    "update-notifier": "^5.1.0"
+  }
+}
