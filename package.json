@@ -11,9 +11,8 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "test": "npm run test"
+    "test": "ava"
   },
-  
   "keywords": [
     "nepali",
     "date",
@@ -36,5 +35,12 @@
     "meow": "^9.0.0",
     "ora": "^5.4.0",
     "update-notifier": "^5.1.0"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "xo": "*"
+  },
+  "xo": {
+    "esnext": true
   }
 }

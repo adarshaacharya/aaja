@@ -14,7 +14,6 @@ const showOutput = (aaja) => {
 
   // Text + chalk definitions
   const data = {
-    name: chalk.white('               aaja - cli tool to '),
     npDate: chalk.cyan(npDate),
     tithi: chalk.cyan(tithi),
     events: chalk.cyan(events),
@@ -29,7 +28,6 @@ const showOutput = (aaja) => {
 
   // Actual strings we're going to output
   const newline = '\n';
-  const heading = `${data.name}`;
   const strNpDate = `${data.labelNpDate}  ${data.npDate}`;
   const strTithi = `${data.labelTithi}  ${data.tithi}`;
   const strEvents = `${data.labelEvents}  ${data.events}`;
@@ -38,9 +36,6 @@ const showOutput = (aaja) => {
 
   // Put all our output together into a single variable
   const output =
-    heading +
-    newline +
-    newline +
     strNpDate +
     newline +
     strTithi +
