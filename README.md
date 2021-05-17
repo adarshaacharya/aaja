@@ -46,12 +46,6 @@ Open terminal or other CLI and type :
 $ aaja
 ```
 
-or, if you've haven't installed `aaja` globally run using npx :
-
-```bash
-$ npx aaja
-```
-
 ## Output Sample
 
 ---
