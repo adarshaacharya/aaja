@@ -4,7 +4,7 @@
 <p align="center">
 <a href="https://www.npmjs.org/package/aaja"><img src="https://img.shields.io/npm/v/aaja?style=flat-square&logo=npm&label=npm"></a>
 <a href="https://www.npmjs.org/package/aaja"><img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/aaja?color=brightgreen&label=package%20size&style=flat-square"></a>
-<a href="https://www.npmjs.org/package/aaja"><img alt="npm bundle size" src="https://img.shields.io/npm/l/aaja?style=flat-square"></a>
+<a href="https://www.npmjs.org/package/aaja"><img alt="license" src="https://img.shields.io/npm/l/aaja?style=flat-square"></a>
 
 </p>
 
@@ -40,10 +40,16 @@ $ sudo npm install -g aaja
 
 ## Usage
 
-Open terminal or other CLI and type
+Open terminal or other CLI and type :
 
 ```bash
 $ aaja
+```
+
+or, if you've haven't installed `aaja` globally run using npx :
+
+```bash
+$ npx aaja
 ```
 
 ## Output Sample
