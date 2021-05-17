@@ -1,7 +1,5 @@
 #!/usr/bin/env node
-
 'use strict';
-
 const dns = require('dns');
 const got = require('got');
 const cheerio = require('cheerio');

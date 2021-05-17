@@ -1,5 +1,6 @@
-# aja
-
+<p align="center">
+<img src="assets/logo.svg" alt="Logo" />
+</p>
 <p align="center">
 <a href="https://www.npmjs.org/package/aaja"><img src="https://img.shields.io/npm/v/aaja?style=flat-square&logo=npm&label=npm"></a>
 <a href="https://www.npmjs.org/package/aaja"><img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/aaja?color=brightgreen&label=package%20size&style=flat-square"></a>
@@ -13,8 +14,7 @@
    </b>
 </p>
 
-
-`aaja (आज)` pronouned as `/aja, åja, aaja/` means `today` in Nepali/Hindi. 
+`aaja (आज)` pronouned as `/aja, åja, aaja/` means `today` in Nepali/Hindi.
 
 ---
 
