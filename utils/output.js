@@ -1,6 +1,6 @@
 const boxen = require('boxen');
 const logUpdate = require('log-update');
-const chalk = require('chalk')
+const chalk = require('chalk');
 
 // Define options for Boxen
 const options = {
@@ -14,7 +14,8 @@ const showOutput = (aaja) => {
 
   // Text + chalk definitions
   const data = {
-    npDate: chalk.white(npDate),
+    name: chalk.white('               aaja - cli tool to '),
+    npDate: chalk.cyan(npDate),
     tithi: chalk.cyan(tithi),
     events: chalk.cyan(events),
     time: chalk.cyan(time),
@@ -28,6 +29,7 @@ const showOutput = (aaja) => {
 
   // Actual strings we're going to output
   const newline = '\n';
+  const heading = `${data.name}`;
   const strNpDate = `${data.labelNpDate}  ${data.npDate}`;
   const strTithi = `${data.labelTithi}  ${data.tithi}`;
   const strEvents = `${data.labelEvents}  ${data.events}`;
@@ -36,6 +38,9 @@ const showOutput = (aaja) => {
 
   // Put all our output together into a single variable
   const output =
+    heading +
+    newline +
+    newline +
     strNpDate +
     newline +
     strTithi +
