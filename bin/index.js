@@ -57,6 +57,7 @@ const main = () => {
 
       const main = `#top .container12 .column4 .logo`;
 
+
       const npDate = $(`${main} .date`);
       aaja.npDate = npDate.text().trim();
 
@@ -66,8 +67,9 @@ const main = () => {
         .split(',')
         .map((el) => el.trim());
 
+
       aaja.tithi = tithi;
-      aaja.events = events.split('/');
+      aaja.events = events ? events.split('/') :"No events found for today";
 
       const time = $(`${main} .time > span:nth-child(1)`);
       aaja.time = time.text().trim();
@@ -79,6 +81,7 @@ const main = () => {
       showOutput(aaja);
     })
     .catch((err) => {
+      console.log(err)
       if (err) showError();
     });
 };
