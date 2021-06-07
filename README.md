@@ -14,7 +14,9 @@
    </b>
 </p>
 
+<p align="center">
 `aaja (आज)` is pronouned as `/åja, aaja/` means `today` in Nepali.
+</p>
 
 ---
 
