@@ -14,7 +14,7 @@
    </b>
 </p>
 
-`aaja (आज)` is pronouned as `/åja, aaja/` means `today` in Nepali/Hindi.
+`aaja (आज)` is pronouned as `/åja, aaja/` means `today` in Nepali.
 
 ---
 
