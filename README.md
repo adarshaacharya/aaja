@@ -42,7 +42,7 @@ $ sudo npm install -g aaja
 
 ## Usage
 
-Open terminal or other CLI and type :
+Open the terminal or other CLI and type :
 
 ```bash
 $ aaja
