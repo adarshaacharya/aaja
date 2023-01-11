@@ -7,20 +7,24 @@ const chalk = require('chalk');
 const ora = require('ora');
 const logUpdate = require('log-update');
 const updateNotifier = require('update-notifier');
-const meow = require('meow');
 const pkg = require('../package.json');
 const { showOutput } = require('../utils/output');
+const boxen = require('boxen');
 
 updateNotifier({ pkg }).notify();
 
 const spinner = ora();
 const url = `english.hamropatro.com`;
 
-const checkArgs = () => {
-  meow(`
-    Usage
-      $ aaja
-  `);
+const checkArgs = (args) => {
+  if (args[0] === '--author') {
+    logUpdate((boxen(`
+    Created by : Aadarsha Acharya
+    GitHub     :  https://github.com/adarshaacharya
+    Twitter    : https://twitter.com/adarsha_ach
+  `)));
+    process.exit(0);
+  }
 };
 
 const checkConnection = () => {
@@ -44,7 +48,9 @@ const showError = () => {
 
 const main = () => {
   const aaja = {};
-  checkArgs();
+  const userArgv = process.argv.slice(2);
+  checkArgs(userArgv);
+
   checkConnection();
 
   got(`https://${url}`)
