@@ -1,0 +1,26 @@
+name: Test on Pull Request
+
+on:
+  pull_request:
+    branches:
+      - master # Or whatever your main branch is named (e.g., master, develop)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x] # Test with different Node.js versions
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm' # Cache npm dependencies
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm test
