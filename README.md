@@ -74,12 +74,12 @@ Give a ⭐️ if you like the project! :tada:
 
 ## Author
 
-- Website: <https://adarshaacharya.com.np/>
-- Twitter: [@aadarshatweets](https://twitter.com/aadarshatweets)
+- Website: <https://adarsha.dev/>
+- Twitter: [@adarsha_ach](https://x.com/adarsha_ach)
 - Github: [@adarshaacharya](https://github.com/adarshaacharya)
 - LinkedIn: [@adarshaacharya](https://linkedin.com/in/adarshaacharya)
 
 ## License
 
-Copyright © 2021 [Aadarsha Acharya](http://adarshaacharya.com.np/).<br />
+Copyright © 2026 [Aadarsha Acharya](http://adarsha.dev/).<br />
 This project is [MIT](https://github.com/adarshaacharya/aaja/blob/master/LICENSE) licensed.

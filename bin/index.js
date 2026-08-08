@@ -57,70 +57,37 @@ const main = () => {
 
   got(`https://${url}`)
     .then((res) => {
-      const $ = cheerio.load(res.body, {
-        xml: {
-          normalizeWhitespace: true,
-        },
-      });
+      const $ = cheerio.load(res.body);
 
-      const main = `#top .container12 .column4 .logo`;
+      const today = $('section[aria-label="Today"]');
 
-      const npDate = $(`${main} .date`);
+      const npDate = today.find('a[href^="/en/date/"]').first();
       aaja.npDate = npDate.text().trim();
 
-      // Extract tithi from divs without specific classes (between .date and .time)
-      // These divs contain tithi info - we want the one with English text
-      let tithiFound = false;
-      $(`${main} > div`).each((i, elem) => {
-        const className = $(elem).attr('class') || '';
-        // Skip divs with known classes
-        if (className === 'date' || className === 'time') {
-          return;
-        }
+      const paragraphs = today.find('p');
+      aaja.enDate = paragraphs.eq(0).text().trim();
+      aaja.tithi = paragraphs.eq(1).text().trim() || 'No tithi found.';
 
-        const text = $(elem).text().trim();
-        // Look for text that contains English letters (not just Devanagari)
-        if (text && /[a-zA-Z]/.test(text) && !tithiFound) {
-          // Extract English words (remove Devanagari, colons, and special chars)
-          const englishWords = text
-            .replace(/[\u0900-\u097F:]/g, ' ') // Remove Devanagari and colons
-            .split(/\s+/) // Split by whitespace
-            .filter((word) => word && /^[a-zA-Z]+$/.test(word)); // Keep only pure English words
+      // Today's calendar cell carries its events in the aria-label,
+      // e.g. "23, Dashami, Bhanu Jayanti, holiday, today"
+      const todayCell = $('[aria-label$="today"]').first();
+      const label = todayCell.attr('aria-label') || '';
+      const events = label
+        .split(',')
+        .map((part) => part.trim())
+        .slice(2) // drop day number and tithi
+        .filter((part) => part && part !== 'holiday' && part !== 'today');
 
-          if (englishWords.length > 0) {
-            aaja.tithi = englishWords.join(' ');
-            tithiFound = true;
-          }
-        }
-      });
+      aaja.events = events.length ? events : 'No events found for today.';
 
-      if (!tithiFound) {
-        aaja.tithi = 'No tithi found.';
-      }
-
-      // Extract events from the upcoming days section
-      let eventsFound = false;
-      const upcomingDays = $('.upcomingdays.scroll li');
-      upcomingDays.each((i, elem) => {
-        const text = $(elem).text().trim();
-        if (text.includes('today')) {
-          const eventText = $(elem).find('.info span').first().text().trim();
-          if (eventText) {
-            aaja.events = eventText.split('/').map((e) => e.trim());
-            eventsFound = true;
-          }
-        }
-      });
-
-      if (!eventsFound) {
-        aaja.events = 'No events found for today.';
-      }
-
-      const time = $(`${main} .time > span:nth-child(1)`);
-      aaja.time = time.text().trim();
-
-      const enDate = $(`${main} .time >span.eng`);
-      aaja.enDate = enDate.text().trim();
+      // Time is rendered client-side on the site, so compute it locally
+      aaja.time = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Asia/Kathmandu',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true,
+      }).format(new Date());
 
       spinner.stop();
       showOutput(aaja);
